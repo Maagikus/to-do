@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block todo %}
+
+{% if request.user.is_authenticated %}
+<div class="todo">
+    <div class="todo__container">
+        <div class="todo__wrapper">
+            <div class="todo__content">
+                <div class="todo__inp">
+                    <form method="get" action="{% url 'add_el' user_id=request.user.id %}">
+                        {% csrf_token %}
+                        <input class="todo__input" type="text" name="add_info">
+                        <button class="todo__add" type="submit">Add</button>
+                    </form>
+                </div>
+                <ul class="todo__body">
+                    {% for item in do %}
+                    <li class="todo__item" draggable="true">{{ item.todo }}<a href="{% url 'del_el' item_id=item.pk user_id=item.user.id %}"><button class="todo__del">Dell</button></a></li>
+                    {% endfor %}
+                </ul>
+                <div class="todo__options">
+                    <a href="{% url 'del_el_all' user_id=request.user.id %}"><div class="todo__delete">delete all</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="todo">
+    <div class="todo__container">
+        <div class="todo__wrapper">
+            <div class="todo__content">
+                <div class="todo__inp">
+                    <input class="todo__input" type="text" name="" id="">
+                    <button class="todo__add">Add</button>
+                </div>
+                <ul class="todo__body">
+
+                </ul>
+                <div class="todo__options">
+                    <div class="todo__save">save</div>
+                    <div class="todo__clear">clear</div>
+                    <div class="todo__delete">delete all</div>
+                    <div class="todo__open">open end</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Главная</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="{% static 'todolist/css/style.min.css' %}">
+	<link rel="shortcut icon" href="{% static 'todolist/favicon.ico' %}">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+			</div>
+		</header>
+		<main class="page">
+			{% if request.user.is_authenticated %}
+			<div class="exit">
+				<div class="exit_container">
+					<a href="{% url 'Logout' %}"><button class="button">Выйти</button></a>
+				</div>
+			</div>
+			{% else %}
+			<div class="registration">
+				<div class="registration__container">
+					<form action="{% url 'RegUser' %}" class="registration__form">
+						{{ reg.username }}
+						{{ reg.email }}
+						{{ reg.password1 }}
+						{{ reg.password2 }}
+						<button type="submit" class="button">Зарегистрировать</button>
+					</form>
+				</div>
+			</div>
+			<div class="loginin">
+				<div class="loginin__container">
+					<form action="{% url 'LogUser' %}" class="loginin__form">
+						{{ log.username }}
+						{{ log.password }}
+						<button type="submit" class="button">Войти</button>
+					</form>
+				</div>
+			</div>
+			{% endif %}
+			{% block todo %}
+			{% endblock %}
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+			</div>
+		</footer>
+	</div>
+	<!-- 
+<div id="popup" aria-hidden="true" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close">Закрыть</button>
+			<div class="popup__text">
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+
+	<script src="{% static 'todolist/js/app.min.js' %}"></script>
+</body>
+
+</html>
