@@ -29,7 +29,8 @@
 				{% else %}
 				<div class="registration">
 					<div class="registration__container">
-						<form action="{% url 'RegUser' %}" class="registration__form">
+						<form action="{% url 'RegUser' %}" method="post" class="registration__form">
+							{% csrf_token %}
 							{{ reg.username }}
 							{{ reg.email }}
 							{{ reg.password1 }}
@@ -40,7 +41,8 @@
 				</div>
 				<div class="loginin">
 					<div class="loginin__container">
-						<form action="{% url 'LogUser' %}" class="loginin__form">
+						<form action="{% url 'LogUser' %}" method="post" class="loginin__form">
+							{% csrf_token %}
 							{{ log.username }}
 							{{ log.password }}
 							<button type="submit" class="button todo__clear todo__delete">Войти</button>
