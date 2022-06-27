@@ -35,8 +35,17 @@
 							{{ reg.email }}
 							{{ reg.password1 }}
 							{{ reg.password2 }}
-							<button type="submit" class="button todo__clear todo__delete">Зарегистрировать</button>
+							<button type="submit" class="button todo__clear todo__delete button-scr">Зарегистрировать</button>
 						</form>
+
+
+
+						<!-- Всплывающее окно -->
+						<div class="screen">
+							<div class="screen__container">
+								<div class="screen__text">Данные введенные до регистрации не сохраняться!</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="loginin">
@@ -45,7 +54,7 @@
 							{% csrf_token %}
 							{{ log.username }}
 							{{ log.password }}
-							<button type="submit" class="button todo__clear todo__delete">Войти</button>
+							<button type="submit" class="button todo__clear todo__delete button-scr">Войти</button>
 						</form>
 					</div>
 				</div>

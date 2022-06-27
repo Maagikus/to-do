@@ -7,3 +7,17 @@ cursor:pointer;
 background:red;
 padding:8px 20px;
 border-radius:3px;}
+.screen{
+	display: block;
+}
+.screen__container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.screen__text{
+	padding: 20px 20px;
+	color: red;
+	font-size: 25px;
+	
+}
